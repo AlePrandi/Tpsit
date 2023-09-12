@@ -1,3 +1,3 @@
 # TPSIT
 
-Questo repo contiene gli es dell' A.S 23/24
+Questo repo contiene gli es di tpsit dell' A.S 23/24

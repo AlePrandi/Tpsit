@@ -1,0 +1,15 @@
+comandi linux:
+ 
+MAN serve a visualizzare il manuale dei comandi digitati dopo
+
+PWD serve a mostrare la cartella in cui ci si trova
+
+LS serve a elencare il contenuto di una cartella
+
+CP serve a copiare un file in altri file, cartelle 
+
+CD serve a spostarsi all'interno delle cartelle 
+
+MKDIR serve a creare una cartella
+
+

@@ -12,32 +12,37 @@ testo
 #define DIM_RIGA 200
 #define NUM_RIGHE 20000
 
-typedef struct {
+typedef struct
+{
     int numero;
     char *titolo;
     char *genere;
     int anno;
     char *disp;
-}film;
+} film;
 
-int main() {
+int main()
+{
     char nomefile[] = "listafilm.csv";
     char buffer[DIM_RIGA];
     FILE *fp;
     char *campo;
     film Lista[NUM_RIGHE];
     int cont = 0;
+    int anno = 0;
 
-    fp = fopen(nomefile,"r");
-    if(fp == NULL) {
+    fp = fopen(nomefile, "r");
+    if (fp == NULL)
+    {
         printf("il file %s non esiste\n", nomefile);
         exit(1);
     }
-    while(fgets(buffer,DIM_RIGA, fp)) {
+    while (fgets(buffer, DIM_RIGA, fp))
+    {
 
         campo = strtok(buffer, ",");
         Lista[cont].numero = atoi(campo);
-        //atoi int atof float
+        // atoi int atof float
         campo = strtok(NULL, ",");
         Lista[cont].titolo = strdup(campo);
 
@@ -51,9 +56,22 @@ int main() {
         Lista[cont].disp = strdup(campo);
         cont++;
     }
+/*
     printf("Lista dei film: \n");
-    for(int k=0; k<cont; k++) {
-        printf("%d %s %s %d %s \n",Lista[k].numero,Lista[k].titolo,Lista[k].genere,Lista[k].anno,Lista[k].disp);
+    for (int k = 0; k < cont; k++)
+    {
+        printf("%d %s %s %d %s \n", Lista[k].numero, Lista[k].titolo, Lista[k].genere, Lista[k].anno, Lista[k].disp);
+    }
+*/
+    printf("inserisci un anno del film: ");
+    scanf("%d", &anno);
+    printf("I film in questo anno sono: \n");
+    for (int k = 0; k < cont; k++)
+    {
+        if(anno ==  Lista[k].anno){
+        printf("%s \n", Lista[k].titolo);            
+        }
+
     }
     return 0;
 }

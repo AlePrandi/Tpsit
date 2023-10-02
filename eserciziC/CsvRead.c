@@ -56,22 +56,22 @@ int main()
         Lista[cont].disp = strdup(campo);
         cont++;
     }
-/*
-    printf("Lista dei film: \n");
-    for (int k = 0; k < cont; k++)
-    {
-        printf("%d %s %s %d %s \n", Lista[k].numero, Lista[k].titolo, Lista[k].genere, Lista[k].anno, Lista[k].disp);
-    }
-*/
+    /*
+        printf("Lista dei film: \n");
+        for (int k = 0; k < cont; k++)
+        {
+            printf("%d %s %s %d %s \n", Lista[k].numero, Lista[k].titolo, Lista[k].genere, Lista[k].anno, Lista[k].disp);
+        }
+    */
     printf("inserisci un anno del film: ");
     scanf("%d", &anno);
     printf("I film in questo anno sono: \n");
     for (int k = 0; k < cont; k++)
     {
-        if(anno ==  Lista[k].anno){
-        printf("%s \n", Lista[k].titolo);            
+        if (anno == Lista[k].anno)
+        {
+            printf("%s \n", Lista[k].titolo);
         }
-
     }
     return 0;
 }

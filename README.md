@@ -1,3 +1,2 @@
 # TPSIT
-
-Questo repo contiene gli es di tpsit dell' A.S 23/24
+Questo repo contiene i miei es in C di TPSIT dell' A.S 23/24

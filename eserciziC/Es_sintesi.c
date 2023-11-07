@@ -26,20 +26,21 @@ void scambio(Classe *a, Classe *b)
     *b = num;
 }
 
-int contaRighe(char riga[], Classe Alunno[], int cont)
+int contaRighe()
 {
     int n = 0;
-    FILE *fp2 = fopen("classe.csv", "r");
-    while (fgets(riga, LUNG_RIGA, fp2))
+    char *riga;
+    FILE *fp = fopen("classe.csv", "r");
+    while (fgets(riga, LUNG_RIGA, fp))
     {
         n++;
     }
-    fclose(fp2);
+    fclose(fp);
     return n;
     ;
 }
 
-void ordinaClasse(Classe alunno[], int cont, Data nascita[])
+void ordinaClasse(Classe alunno[], int cont)
 {
     Classe *k;
     int sup, sca;
@@ -81,18 +82,16 @@ void ordinaClasse(Classe alunno[], int cont, Data nascita[])
 int main()
 {
     Classe *alunno;
-    Data *nascita;
-    char fileName[] = "classe.csv";
+    char nomefile[] = "classe.csv";
     char riga[LUNG_RIGA];
     FILE *fp;
     char *campo;
     int num = 0;
-    int n_righe = contaRighe(riga, alunno, DIM);
+    int n_righe = contaRighe();
     alunno = (Classe *)malloc(n_righe * sizeof(Classe));
-    nascita = (Data *)malloc(n_righe * sizeof(Data));
     Classe *cont = alunno;
     printf("Numero righe: %d\n", n_righe);
-    fp = fopen(fileName, "r");
+    fp = fopen(nomefile, "r");
     if (fp == NULL)
     {
         printf("Il file non esiste! \n");
@@ -117,7 +116,7 @@ int main()
 
     fclose(fp);
     printf("Stampa ordinata: \n");
-    ordinaClasse(alunno, num, nascita);
+    ordinaClasse(alunno, num);
     for (Classe *k = alunno; k < alunno + num; k++)
     {
         printf("%s %s %d %d %d \n", k->cognome, k->nome, k->nascita->giorno, k->nascita->mese, k->nascita->anno);

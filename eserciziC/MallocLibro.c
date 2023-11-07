@@ -135,11 +135,11 @@ int main()
         campo = strtok(NULL, ",");
         i->Titolo = strdup(campo);
         campo = strtok(NULL, ",");
-        i->data->anno = atoi(campo);
+        i->data->giorno = atoi(campo);
         campo = strtok(NULL, ",");
         i->data->mese = atoi(campo);
         campo = strtok(NULL, ",");
-        i->data->giorno = atoi(campo);
+        i->data->anno = atoi(campo);
     }
 
     fclose(fp);

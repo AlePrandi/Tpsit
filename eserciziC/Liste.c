@@ -7,8 +7,7 @@ typedef struct node
     struct node *next;
 } Node;
 
-/*
-int numeroElementi(Node *head){
+int numeroElementiIter(Node *head){
     int cont = 0;
     Node *l = head;
     while (l != NULL){
@@ -17,19 +16,26 @@ int numeroElementi(Node *head){
     }
     return cont;
 }
-*/
 
-int numeroElementi(Node *head){
-    int cont = 0;
+int numeroElementiRic(Node *head)
+{
     Node *l = head;
-    if (l == NULL){
-        return cont;
-    }else{
-        cont++;
-        return numeroElementi(l);  
+    int cont;
+    if (l == 0)
+        cont = 0;
+    else
+    {
+        if (l == NULL)
+        {
+            return cont;
+        }
+        else
+        {
+            cont++;
+            return cont + numeroElementi(l->next);
+        }
     }
 }
-
 
 int main()
 {
@@ -58,7 +64,7 @@ int main()
             l->next = NULL;
         }
     } while (n >= 0);
-    cont = numeroElementi(lista);
+    cont = numeroElementiRic(lista);
     l = lista;
     printf("Numeri inseriti: \n");
     while (l != NULL)

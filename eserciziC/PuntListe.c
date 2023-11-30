@@ -20,31 +20,22 @@ int calcolaLung(Elemento *lista)
     return lung;
 }
 
-int somma(Elemento *head, int M)
+Elemento *primoPari(Elemento *l)
 {
-    if (head == NULL)
-    {
-        return -1;
-    }
-
-    int somma_M = 0;
-    Elemento *l = head;
-
     while (l != NULL)
     {
-        if (l->dato % M == 0)
-        {
-            somma_M += l->dato;
-        }
-        l = l->next;
-    }
 
-    return somma_M;
+        if (l->dato % 2 == 0)
+            return l->next;
+        else
+            l = l->next;
+    }
+    return NULL;
 }
 
 int main()
 {
-    int n, num;
+    int n;
     int lung = 0;
     Elemento *lista = NULL;
     Elemento *l;
@@ -78,10 +69,8 @@ int main()
         l = l->next;
     }
 
-    printf("Inserisci un numero da cercare i multipli: ");
-    scanf("%d", &num);
-    int somM = somma(lista, num);
-    printf("La somma e: %d", somM);
+    Elemento *pos = primoPari(lista);
+    printf("La prima posizione pari e: %p", pos);
     free(lista);
     return 0;
 }

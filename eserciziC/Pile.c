@@ -14,7 +14,7 @@ int is_empty(Node*head){
 void push(Node**head, Node*element){
     if(is_empty(*head)){
         *head = element;
-        element->next=NULL;
+        element->next=NULL; 
     }else{
         element->next=*head;
         *head = element;

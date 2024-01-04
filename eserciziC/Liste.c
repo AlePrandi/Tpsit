@@ -86,7 +86,7 @@ void removeUltimo(Node **lista)
 {
     Node *l = *lista;
     while (l->next->next != NULL)
-    {
+    { 
         l = l->next;
     }
     free(l->next);

@@ -1,0 +1,20 @@
+Complessità di tempo 
+
+-notazione "o grande"
+
+serve a capire la durata di un ordinamento
+
+v = [1, - 21 , 4, 6................................]
+
+minimo = v[0]
+
+for x in v:
+    if x < minimo:
+        minimo = x
+
+    ^
+    |
+    10 ^ -5 sec
+
+T è linearmente proporzionale a N (lunghezza dell'array)
+è indicato O(N)

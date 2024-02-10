@@ -54,9 +54,9 @@ void stampaCoda(Film* head){
     Film* l = head;
     while (l != NULL)
     {
-        printf("\n%s ", l->genere);
-        printf("\n%s ", l->titolo);
-        printf("\n%d\n ", l->anno);
+        printf("\nGenere: %s ", l->genere);
+        printf("\nTitolo: %s ", l->titolo);
+        printf("\nAnno: %d\n ", l->anno);
         l = l ->next;
     }
 }
@@ -91,9 +91,9 @@ int main() {
 
     Film* elemento2 = (Film*)malloc(sizeof(Film));
 
-    elemento2->genere = "Rossi";
-    elemento2->titolo = "Mario";
-    elemento2->anno = 16;
+    elemento2->genere = "Azione";
+    elemento2->titolo = "Avengers";
+    elemento2->anno = 2015;
     elemento2->next = NULL;
 
     enqueue(&head, &tail, elemento2);

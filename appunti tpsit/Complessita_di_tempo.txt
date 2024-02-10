@@ -17,4 +17,4 @@ for x in v:
     10 ^ -5 sec
 
 T è linearmente proporzionale a N (lunghezza dell'array)
-è indicato O(N)
+è indicato O(N) = 10s O(N^2) = 100s

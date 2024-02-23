@@ -18,3 +18,18 @@ for x in v:
 
 T è linearmente proporzionale a N (lunghezza dell'array)
 è indicato O(N) = 10s O(N^2) = 100s
+
+la complessità di tempo di un'algoritmo array[0] == array[1] è O(1) in quanto la durata non dipende dalla lunghezza dell'array
+
+per calcolare il tempo ci si mette sempre nel caso peggiore es. gli elementi uguali sono agli opposti
+
+for (i = 0; i < n; i++){
+	for(j = i + 1; j < n; j++){
+
+}
+}
+
+nel 90% dei casi di 2 cicli annidati la complessità è n^2 e in 3 cicli n^3, tranne se hanno moltissimi elementi
+
+
+Negli alberi la complessità è O(logn * n)

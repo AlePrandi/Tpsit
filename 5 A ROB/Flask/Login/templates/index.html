@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #282c34;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            flex-direction: column;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .controller {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .controller button {
+            width: 60px;
+            height: 60px;
+            background-color: #61dafb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .controller button:hover {
+            background-color: #21a1f1;
+        }
+
+        .logout-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #ff4b5c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .logout-button:hover {
+            background-color: #ff1f3a;
+        }
+    </style>
+</head>
+
+<title>Login Tutorial</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<body>
+    <form action="/logout" method="post">
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+
+    <h1>Ciao {{username}}!</h1>
+
+    <div class="controller">
+        <div></div>
+        <button data-key="w">W</button>
+        <div></div>
+        <button data-key="a">A</button>
+        <button data-key="stop">Stop</button>
+        <button data-key="d">D</button>
+        <div></div>
+        <button data-key="s">S</button>
+        <div></div>
+    </div>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const keys = ['w', 'a', 's', 'd'];
+        const stopKey = 'stop';
+
+        // Funzione per inviare eventi chiave al server
+        const sendKeyEvent = (key, state) => {
+            fetch('/key_event', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ key, state })
+            }).then(response => {
+                console.log(`Inviato: { key: ${key}, state: ${state} }`);
+            }).catch(error => {
+                console.error(`Errore durante l'invio: ${error}`);
+            });
+        };
+
+        // Gestione degli eventi click per i bottoni
+        document.querySelectorAll('.controller button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                const key = button.dataset.key;
+                if (key) sendKeyEvent(key, true); // Tasto premuto
+            });
+
+            button.addEventListener('mouseup', () => {
+                const key = button.dataset.key;
+                if (key) sendKeyEvent(key, false); // Tasto rilasciato
+            });
+
+            button.addEventListener('mouseleave', () => {
+                const key = button.dataset.key;
+                if (key) sendKeyEvent(key, false); // Tasto rilasciato quando il cursore esce dal bottone
+            });
+        });
+    });
+</script>
+
+</html>

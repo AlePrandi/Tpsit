@@ -1,0 +1,63 @@
+#client
+
+import socket
+
+SERVER_ADDRESS = ("127.0.0.1", 9090)
+BUFFER_SIZE = 4096
+
+def main():
+	try:
+        	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        	s.connect(SERVER_ADDRESS)
+		s.sendall("check_file".encode())
+        	message = s.recv(BUFFER_SIZE).decode()
+	expect Error as e:
+		print(f"Errore: {e}")
+	s.close()
+
+if __name__ == "__main__":
+main()
+
+#server
+
+import sqlite3
+import socket
+import threading
+
+# Impostazioni server
+MY_ADDRESS = ("127.0.0.1", 9090)
+BUFFER_SIZE = 4096
+
+class Client_handler(threading.Thread):
+    def __init__(self, connection):
+        super().__init__()
+        self.connection = connection
+
+    def run(self):
+        try:
+            with sqlite3.connect("./file.db") as conn_db:
+		cur = conn_db.cursor()
+                query = f"""
+                         SELECT COUNT(*)
+                         FROM files
+                         WHERE nome LIKE '%{filename}%'
+                         """
+                cur.execute(query)
+                risposta = cur.fetchall()
+
+def main():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind(MY_ADDRESS)
+    s.listen()
+    
+    while True:
+        connection, client_address = s.accept()
+        print(f"Il client {client_address} si è connesso")
+        thread = Client_handler(connection)
+        thread.start()
+
+    s.close()
+
+
+if __name__ == "__main__":
+    main()

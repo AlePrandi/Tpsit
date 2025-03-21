@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        {% for id, details in products.items() %}
+        <li>
+          <strong>ID: {{ id }}</strong> - {{ details['name'] }} - Prezzo: €{{ details['price'] }} - Disponibilità: {{ details['stock'] }}
+        </li>
+        {% endfor %}
+      </ul>
+    <form action="/homeADM" method="POST">
+        <label for="add">Inserire un prodotto da aggiungere: </label>
+        <label>Id: </label>
+        <input type="number" name="id" />
+        <label>Name: </label>
+        <input type="text" name="nome" />
+        <label>Prezzo: </label>
+        <input type="number" name="prezzo" />
+        <label>Quantità: </label>
+        <input type="number" name="qt" />
+        <input type="submit" value="aggiungi prodotto" name="action-aggiungere" />
+        <br>
+        <label for="remove">Rimuovi un prodotto: </label>
+        <label>Inserire id: </label>
+        <input type="number" name="id_rimosso" />
+        <input type="submit" value="rimuovi prodotto" name="action-rimuovere" />
+        <br>
+        <label for="modificareQT">Modifica le quantità: </label>
+        <label>Inserire id: </label>
+        <input type="number" name="id_modifica" />
+        <label>Nuova quantità: </label>
+        <input type="number" name="qt_modifica" />
+        <input type="submit" value="modifica quantità" name="action-modifica" />
+        <br>
+        <input type="submit" value="logout" name="action-logout" />
+    </form>
+</body>
+</html>

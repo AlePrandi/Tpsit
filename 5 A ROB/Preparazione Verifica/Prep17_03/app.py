@@ -6,7 +6,6 @@ from VendingMachine import VendingMachine
 vm = VendingMachine()
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "chiave_super_segreta"
 
 
 def hash_password(password):
@@ -127,6 +126,12 @@ def index():
             else:
                 return redirect(url_for('user'))
     return redirect(url_for('login'))
+
+@app.route("/logout", methods=['GET', 'POST'])
+def logout():
+    resp = make_response(redirect(url_for('login')))
+    resp.delete_cookie('username')
+    return resp
 
 
 if __name__ == '__main__':

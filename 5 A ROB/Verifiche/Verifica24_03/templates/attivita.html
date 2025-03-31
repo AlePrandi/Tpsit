@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Lista Attivita</h2>
+    <ul>
+        {% for attivita in ListaAttivita %}
+        <li>
+            <strong>ID: {{ attivita[0] }}</strong> - {{ attivita[1] }} - {{
+            attivita[2] }} - {{attivita[3]}} - {{ attivita[4] }}
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="/attivita" method="post">
+        <label>Aggiungi attivita</label><br>
+        <label>Descrizione: </label>
+        <input type="text" name="desc" />
+        <input type="submit" value="aggiungi attivita" name="aggiungi" /><br>
+        <label>azioni attivita</label><br>
+        <label>Completa</label>
+        <label>Id: </label>
+        <input type="text" name="id-completa" />
+        <input type="submit" value="completa attivita" name="completa" /><br>
+        <label>Elimina</label><br>
+        <label>Id: </label>
+        <input type="text" name="id-elimina" />
+        <input type="submit" value="elimina attivita" name="elimina" />
+    </form>
+
+    </form>
+    <form action="/logout" method="post">
+        <button type="submit" value="logout">Logout</button>
+    </form>
+
+    {% if alert %}
+    <script>
+      alert("{{ alert }}");
+    </script>
+    {% endif %}
+</body>
+
+</html>

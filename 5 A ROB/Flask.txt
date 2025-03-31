@@ -1,5 +1,0 @@
-Flask 
-
-è un web server per python molto leggero 
-
-obbiettivo: sito web su alphabot con pagina di login e pagina di controllo
